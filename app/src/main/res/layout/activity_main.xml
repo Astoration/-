@@ -11,7 +11,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_weight="0.3"
+            android:layout_weight="0.2"
             android:padding="15dp">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -41,7 +41,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_weight="0.7"
+            android:layout_weight="0.8"
             android:orientation="vertical"
             android:weightSum="1"
             android:paddingLeft="15dp"
@@ -58,7 +58,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/xml_lines"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     android:weightSum="1"
                     android:orientation="vertical"
                     android:padding="5dp">
@@ -75,7 +75,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="ㄴ"
                             android:textSize="30dp"
@@ -83,7 +83,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="ㅇ"
                             android:textSize="30dp"
@@ -91,7 +91,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                     </LinearLayout>
 
                     <LinearLayout
@@ -111,7 +111,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="ㅎ"
                             android:textSize="30dp"
@@ -119,7 +119,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Space
                             android:layout_width="1dp"
                             android:layout_height="match_parent"
@@ -131,7 +131,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/xml_lines"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     android:weightSum="1"
                     android:orientation="vertical"
                     android:padding="5dp">
@@ -148,7 +148,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="ㅈ"
                             android:textSize="30dp"
@@ -156,7 +156,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="ㄷ"
                             android:textSize="30dp"
@@ -164,7 +164,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                     </LinearLayout>
 
                     <LinearLayout
@@ -184,7 +184,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="ㅅ"
                             android:textSize="30dp"
@@ -192,7 +192,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Space
                             android:layout_width="1dp"
                             android:layout_height="match_parent"
@@ -204,7 +204,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/xml_lines"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     android:weightSum="1"
                     android:orientation="vertical"
                     android:padding="5dp">
@@ -221,7 +221,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="ㅌ"
                             android:textSize="30dp"
@@ -229,7 +229,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="ㅊ"
                             android:textSize="30dp"
@@ -237,7 +237,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                     </LinearLayout>
 
                     <LinearLayout
@@ -253,7 +253,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="\?"
                             android:textSize="30dp"
@@ -261,7 +261,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="띄어쓰기"
                             android:textSize="20dp"
@@ -269,7 +269,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -284,7 +284,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/xml_lines"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     android:weightSum="1"
                     android:orientation="vertical"
                     android:padding="5dp">
@@ -301,7 +301,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="ㅣ"
                             android:textSize="30dp"
@@ -309,7 +309,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="ㅡ"
                             android:textSize="30dp"
@@ -317,7 +317,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                     </LinearLayout>
 
                     <LinearLayout
@@ -333,7 +333,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="ㅜ"
                             android:textSize="30dp"
@@ -341,7 +341,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="ㅓ"
                             android:textSize="30dp"
@@ -349,7 +349,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                     </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
@@ -357,7 +357,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/xml_lines"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     android:weightSum="1"
                     android:orientation="vertical"
                     android:padding="5dp">
@@ -374,7 +374,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="ㅐ"
                             android:textSize="30dp"
@@ -382,7 +382,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="ㅔ"
                             android:textSize="30dp"
@@ -390,7 +390,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                     </LinearLayout>
 
                     <LinearLayout
@@ -406,7 +406,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="ㅠ"
                             android:textSize="30dp"
@@ -414,7 +414,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="ㅕ"
                             android:textSize="30dp"
@@ -422,7 +422,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                     </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
@@ -430,7 +430,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/xml_lines"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     android:weightSum="1"
                     android:orientation="vertical"
                     android:padding="5dp">
@@ -447,7 +447,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="2"
                             android:textSize="30dp"
@@ -455,7 +455,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="3"
                             android:textSize="30dp"
@@ -463,7 +463,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="4"
                             android:textSize="30dp"
@@ -471,7 +471,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="5"
                             android:textSize="30dp"
@@ -479,7 +479,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                     </LinearLayout>
 
                     <LinearLayout
@@ -495,7 +495,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="7"
                             android:textSize="30dp"
@@ -503,7 +503,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="8"
                             android:textSize="30dp"
@@ -511,7 +511,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="9"
                             android:textSize="30dp"
@@ -519,7 +519,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                         <Button
                             android:text="0"
                             android:textSize="30dp"
@@ -527,7 +527,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/xml_lines"
-                            android:layout_margin="5dp"></Button>
+                            android:layout_margin="10dp"></Button>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
