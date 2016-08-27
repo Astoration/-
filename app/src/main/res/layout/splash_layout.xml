@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:background="@drawable/bg_splash">
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"/>
+    <ImageView
+        android:layout_weight="0.6"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:src="@drawable/app_logo"
+        android:layout_gravity="center_vertical|center_horizontal"/>
+
+</LinearLayout>

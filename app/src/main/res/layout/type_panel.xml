@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="0dp"
+android:layout_weight="1"
+android:orientation="vertical"
+android:id="@+id/type_panel"
+android:weightSum="1">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:orientation="horizontal"
+    android:weightSum="3"
+    android:layout_weight="0.5">
+    <include layout="@layout/button_panel"></include>
+    <include layout="@layout/button_panel"></include>
+    <include layout="@layout/button_panel2"></include>
+</LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:orientation="horizontal"
+    android:weightSum="3"
+    android:layout_weight="0.5">
+    <include layout="@layout/button_panel2"></include>
+    <include layout="@layout/button_panel2"></include>
+    <include layout="@layout/button_panel3"></include>
+</LinearLayout>
+</LinearLayout>

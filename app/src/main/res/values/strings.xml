@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">TheEasy</string>
-
+    <string name="sound_button">소리</string>
+    <string name="speak_button">말하기</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 </resources>

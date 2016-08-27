@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "moe.koibito.theeasy"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -22,4 +22,5 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:24.0.0-beta1'
+
 }
