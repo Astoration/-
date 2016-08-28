@@ -731,7 +731,7 @@ public class MainActivity extends Activity{
             }
         }
         if(elementList.size()>=3) {
-            if (elementString.matches(".*[ㅏ-ㅣ]+.*")) {
+            if (elementString.matches(".*[ㄱ-ㅎ]+.*")) {
                 String[] devideText = devideVowels(elementList.get(elementList.size()-1));
                 elementList.remove(elementList.size()-1);
                 for(String t : devideText){
@@ -748,19 +748,23 @@ public class MainActivity extends Activity{
             inputText.setText(baseString+hangul);
         } catch (HangulParserException e) {
             e.printStackTrace();
-            if(3<=elementList.size()) {
-                Log.d("asdf",elementList.toString());
-                elementList.clear();
-                preTextCount= baseString.length();
-                elementList.add(elementString);
-            }
             inputText.setText(baseString+elementString);
             if(code ==14 || code ==15 || 28<=code) {
                 elementList.clear();
                 preTextCount= baseString.length();
+                char[] charArr = baseString.toCharArray();
+                int numCount = 0;
+                for(char c : charArr){
+                    String s = new String(c+"");
+                    if(s.matches(".*[0-9]+.*")){
+                        numCount++;
+                    }
+                }
+                preTextCount-=numCount/2;
+                preTextCount+=numCount;
             }
         }
-        Log.d("asdf",elementList.toString());
+        Log.d("로리",preTextCount+"");
     }
 
     String combineVowels(String s1,String s2){
