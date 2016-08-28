@@ -39,6 +39,7 @@ public class MainActivity extends Activity{
     private ImageButton typeBack;
     private TextToSpeech ttsManager;
     private int speakCount=0;
+    private int preTextCount =0;
     private int backCount=0;
     private boolean isLock = false;
     private ArrayList<String> elementList = new ArrayList<>();
@@ -82,6 +83,9 @@ public class MainActivity extends Activity{
                             }else if(speakCount==1) {
                                 String utteranceId = this.hashCode() + "";
                                 ttsManager.speak(inputText.getText(), TextToSpeech.QUEUE_FLUSH, null, utteranceId);
+                                inputText.setText("");
+                                elementList.clear();
+                                preTextCount=0;
                                 speakCount=0;
                                 backCount=0;
                             }
@@ -97,9 +101,11 @@ public class MainActivity extends Activity{
                 new Handler().postDelayed(new Runnable(){
                     @Override
                     public void run() {
+                        Log.d("asdf","악 시발"+id+"/"+backCount);
+
                         if(id<backCount||backCount<id)
                             return;
-                        if(id==speakCount){
+                        if(id==backCount){
                             if(speakCount==2&&backCount==2){
                                 speakCount=0;
                                 backCount=0;
@@ -107,8 +113,10 @@ public class MainActivity extends Activity{
                                 isLock=!isLock;
                                 speakCount=0;
                                 backCount=0;
-                            }else if(speakCount==1) {
+                            }else if(backCount==1) {
                                 inputText.setText("");
+                                elementList.clear();
+                                preTextCount =0;
                                 speakCount=0;
                                 backCount=0;
                             }
@@ -128,6 +136,7 @@ public class MainActivity extends Activity{
             child.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    if(isLock) return;
                     OnKeyboardSet(finalI1 +1);
                 }
             });
@@ -141,10 +150,16 @@ public class MainActivity extends Activity{
                     for(int index=0;index<2;index++) {
                         Button button = (Button) childTop.getChildAt(1+index);
                         final int finalI = i;
+                        final int finalCharacterCount = characterCount;
                         button.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                OnKeyboardSet((finalI +1));
+                                if(isLock){
+                                    String text = textList[finalCharacterCount];
+                                    typeString(text, finalCharacterCount);
+                                }else {
+                                    OnKeyboardSet((finalI + 1));
+                                }
                             }
                         });
                         button.setText(textList[characterCount]);
@@ -156,10 +171,16 @@ public class MainActivity extends Activity{
                     for(int index=0;index<childTop.getChildCount();index++) {
                         Button button = (Button) childTop.getChildAt(index);
                         final int finalI = i;
+                        final int finalCharacterCount = characterCount;
                         button.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                OnKeyboardSet((finalI +1));
+                                if(isLock){
+                                    String text = textList[finalCharacterCount];
+                                    typeString(text, finalCharacterCount);
+                                }else {
+                                    OnKeyboardSet((finalI + 1));
+                                }
                             }
                         });
                         button.setText(textList[characterCount]);
@@ -174,10 +195,16 @@ public class MainActivity extends Activity{
                     for(int index=0;index<2;index++) {
                         Button button = (Button) childBottom.getChildAt(1+index);
                         final int finalI = i;
+                        final int finalCharacterCount = characterCount;
                         button.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                OnKeyboardSet((finalI +1));
+                                if(isLock){
+                                    String text = textList[finalCharacterCount];
+                                    typeString(text, finalCharacterCount);
+                                }else {
+                                    OnKeyboardSet((finalI + 1));
+                                }
                             }
                         });
                         button.setText(textList[characterCount]);
@@ -190,10 +217,16 @@ public class MainActivity extends Activity{
                     for(int index=0;index<childBottom.getChildCount();index++) {
                         Button button = (Button) childBottom.getChildAt(index);
                         final int finalI = i;
+                        final int finalCharacterCount = characterCount;
                         button.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                OnKeyboardSet((finalI +1));
+                                if(isLock){
+                                    String text = textList[finalCharacterCount];
+                                    typeString(text, finalCharacterCount);
+                                }else {
+                                    OnKeyboardSet((finalI + 1));
+                                }
                             }
                         });
                         button.setText(textList[characterCount]);
@@ -222,10 +255,16 @@ public class MainActivity extends Activity{
                     for(int index=0;index<2;index++) {
                         Button button = (Button) childTop.getChildAt(1+index);
                         final int finalI = i;
+                        final int finalCharacterCount = characterCount;
                         button.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                OnKeyboardSet((finalI +4));
+                                if(isLock){
+                                    String text = textList[finalCharacterCount];
+                                    typeString(text, finalCharacterCount);
+                                }else {
+                                    OnKeyboardSet((finalI + 4));
+                                }
                             }
                         });
                         button.setText(textList[characterCount]);
@@ -237,10 +276,16 @@ public class MainActivity extends Activity{
                     for(int index=0;index<childTop.getChildCount();index++) {
                         Button button = (Button) childTop.getChildAt(index);
                         final int finalI = i;
+                        final int finalCharacterCount = characterCount;
                         button.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                OnKeyboardSet((finalI +4));
+                                if(isLock){
+                                    String text = textList[finalCharacterCount];
+                                    typeString(text, finalCharacterCount);
+                                }else {
+                                    OnKeyboardSet((finalI + 4));
+                                }
                             }
                         });
                         button.setText(textList[characterCount]);
@@ -256,10 +301,16 @@ public class MainActivity extends Activity{
                     for(int index=0;index<2;index++) {
                         Button button = (Button) childBottom.getChildAt(1+index);
                         final int finalI = i;
+                        final int finalCharacterCount = characterCount;
                         button.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                OnKeyboardSet((finalI +4));
+                                if(isLock){
+                                    String text = textList[finalCharacterCount];
+                                    typeString(text, finalCharacterCount);
+                                }else {
+                                    OnKeyboardSet((finalI + 4));
+                                }
                             }
                         });
                         button.setText(textList[characterCount]);
@@ -272,10 +323,16 @@ public class MainActivity extends Activity{
                     for(int index=0;index<childBottom.getChildCount();index++) {
                         Button button = (Button) childBottom.getChildAt(index);
                         final int finalI = i;
+                        final int finalCharacterCount = characterCount;
                         button.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                OnKeyboardSet((finalI +4));
+                                if(isLock){
+                                    String text = textList[finalCharacterCount];
+                                    typeString(text, finalCharacterCount);
+                                }else {
+                                    OnKeyboardSet((finalI + 4));
+                                }
                             }
                         });
                         button.setText(textList[characterCount]);
@@ -363,6 +420,7 @@ public class MainActivity extends Activity{
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            if(isLock) return;
                             String text = msg;
                             typeString(text, finalStartNum);
                         }
@@ -379,6 +437,7 @@ public class MainActivity extends Activity{
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            if(isLock) return;
                             String text = msg;
                             typeString(text, finalStartNum1);
                         }
@@ -398,6 +457,7 @@ public class MainActivity extends Activity{
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            if(isLock) return;
                             String text = msg;
                             typeString(text, finalStartNum2);
                         }
@@ -415,6 +475,7 @@ public class MainActivity extends Activity{
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            if(isLock) return;
                             String text = msg;
                             typeString(text, finalStartNum3);
                         }
@@ -447,6 +508,7 @@ public class MainActivity extends Activity{
                     child.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            if(isLock) return;
                             OnKeyboardSet(finalI1 +1);
                         }
                     });
@@ -460,10 +522,16 @@ public class MainActivity extends Activity{
                             for(int index=0;index<2;index++) {
                                 Button button = (Button) childTop.getChildAt(1+index);
                                 final int finalI = i;
+                                final int finalCharacterCount = characterCount;
                                 button.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        OnKeyboardSet((finalI +1));
+                                        if(isLock){
+                                            String text = textList[finalCharacterCount];
+                                            typeString(text, finalCharacterCount);
+                                        }else {
+                                            OnKeyboardSet((finalI + 1));
+                                        }
                                     }
                                 });
                                 button.setText(textList[characterCount]);
@@ -475,10 +543,16 @@ public class MainActivity extends Activity{
                             for(int index=0;index<childTop.getChildCount();index++) {
                                 Button button = (Button) childTop.getChildAt(index);
                                 final int finalI = i;
+                                final int finalCharacterCount = characterCount;
                                 button.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        OnKeyboardSet((finalI +1));
+                                        if(isLock){
+                                            String text = textList[finalCharacterCount];
+                                            typeString(text, finalCharacterCount);
+                                        }else {
+                                            OnKeyboardSet((finalI + 1));
+                                        }
                                     }
                                 });
                                 button.setText(textList[characterCount]);
@@ -493,10 +567,16 @@ public class MainActivity extends Activity{
                             for(int index=0;index<2;index++) {
                                 Button button = (Button) childBottom.getChildAt(1+index);
                                 final int finalI = i;
+                                final int finalCharacterCount = characterCount;
                                 button.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        OnKeyboardSet((finalI +1));
+                                        if(isLock){
+                                            String text = textList[finalCharacterCount];
+                                            typeString(text, finalCharacterCount);
+                                        }else {
+                                            OnKeyboardSet((finalI + 1));
+                                        }
                                     }
                                 });
                                 button.setText(textList[characterCount]);
@@ -509,10 +589,16 @@ public class MainActivity extends Activity{
                             for(int index=0;index<childBottom.getChildCount();index++) {
                                 Button button = (Button) childBottom.getChildAt(index);
                                 final int finalI = i;
+                                final int finalCharacterCount = characterCount;
                                 button.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        OnKeyboardSet((finalI +1));
+                                        if(isLock){
+                                            String text = textList[finalCharacterCount];
+                                            typeString(text, finalCharacterCount);
+                                        }else {
+                                            OnKeyboardSet((finalI + 1));
+                                        }
                                     }
                                 });
                                 button.setText(textList[characterCount]);
@@ -528,6 +614,7 @@ public class MainActivity extends Activity{
                     child.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            if(isLock) return;
                             OnKeyboardSet(finalI1 +4);
                         }
                     });
@@ -541,10 +628,16 @@ public class MainActivity extends Activity{
                             for(int index=0;index<2;index++) {
                                 Button button = (Button) childTop.getChildAt(1+index);
                                 final int finalI = i;
+                                final int finalCharacterCount =characterCount;
                                 button.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        OnKeyboardSet((finalI +4));
+                                        if(isLock){
+                                            String text = textList[finalCharacterCount];
+                                            typeString(text, finalCharacterCount);
+                                        }else {
+                                            OnKeyboardSet((finalI + 4));
+                                        }
                                     }
                                 });
                                 button.setText(textList[characterCount]);
@@ -555,10 +648,16 @@ public class MainActivity extends Activity{
                             for(int index=0;index<childTop.getChildCount();index++) {
                                 Button button = (Button) childTop.getChildAt(index);
                                 final int finalI = i;
+                                final int finalCharacterCount = characterCount;
                                 button.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        OnKeyboardSet((finalI +4));
+                                        if(isLock){
+                                            String text = textList[finalCharacterCount];
+                                            typeString(text, finalCharacterCount);
+                                        }else {
+                                            OnKeyboardSet((finalI + 4));
+                                        }
                                     }
                                 });
                                 button.setText(textList[characterCount]);
@@ -573,10 +672,16 @@ public class MainActivity extends Activity{
                             for(int index=0;index<2;index++) {
                                 Button button = (Button) childBottom.getChildAt(1+index);
                                 final int finalI = i;
+                                final int finalCharacterCount = characterCount;
                                 button.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        OnKeyboardSet((finalI +4));
+                                        if(isLock){
+                                            String text = textList[finalCharacterCount];
+                                            typeString(text, finalCharacterCount);
+                                        }else {
+                                            OnKeyboardSet((finalI + 4));
+                                        }
                                     }
                                 });
                                 button.setText(textList[characterCount]);
@@ -588,10 +693,16 @@ public class MainActivity extends Activity{
                             for(int index=0;index<childBottom.getChildCount();index++) {
                                 Button button = (Button) childBottom.getChildAt(index);
                                 final int finalI = i;
+                                final int finalCharacterCount = characterCount;
                                 button.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        OnKeyboardSet((finalI +4));
+                                        if(isLock){
+                                            String text = textList[finalCharacterCount];
+                                            typeString(text, finalCharacterCount);
+                                        }else {
+                                            OnKeyboardSet((finalI + 4));
+                                        }
                                     }
                                 });
                                 button.setText(textList[characterCount]);
@@ -619,23 +730,37 @@ public class MainActivity extends Activity{
                 elementList.remove(elementList.size()-1);
             }
         }
+        if(elementList.size()>=3) {
+            if (elementString.matches(".*[ㅏ-ㅣ]+.*")) {
+                String[] devideText = devideVowels(elementList.get(elementList.size()-1));
+                elementList.remove(elementList.size()-1);
+                for(String t : devideText){
+                    elementList.add(t);
+                }
+            }
+        }
         if(code == 15)
             elementString=" ";
         elementList.add(elementString);
         try {
             String hangul = HangulParser.getInstance().assemble(elementList);
-            baseString=baseString.substring(0,baseString.length()-1);
+            baseString=baseString.substring(0,preTextCount);
             inputText.setText(baseString+hangul);
         } catch (HangulParserException e) {
             e.printStackTrace();
             if(3<=elementList.size()) {
                 Log.d("asdf",elementList.toString());
                 elementList.clear();
+                preTextCount= baseString.length();
+                elementList.add(elementString);
             }
             inputText.setText(baseString+elementString);
-            if(code ==14 || code ==15 || 28<=code)
+            if(code ==14 || code ==15 || 28<=code) {
                 elementList.clear();
+                preTextCount= baseString.length();
+            }
         }
+        Log.d("asdf",elementList.toString());
     }
 
     String combineVowels(String s1,String s2){
@@ -684,5 +809,46 @@ public class MainActivity extends Activity{
             return "ㅀ";
         }
         return s2;
+    }
+    String[] devideVowels(String s){
+        if(s.equals("ㄺ")){
+            String[] array = new String[2];
+            array[0] = "ㄹ";
+            array[1] = "ㄱ";
+            return array;
+        }else if(s.equals("ㄵ")){
+            String[] array = new String[2];
+            array[0] = "ㄴ";
+            array[1] = "ㅈ";
+            return array;
+        }else if(s.equals("ㄻ")){
+            String[] array = new String[2];
+            array[0] = "ㄹ";
+            array[1] = "ㅁ";
+            return array;
+        }else if(s.equals("ㄼ")){
+            String[] array = new String[2];
+            array[0] = "ㄹ";
+            array[1] = "ㅂ";
+            return array;
+        }else if(s.equals("ㄽ")){
+            String[] array = new String[2];
+            array[0] = "ㄹ";
+            array[1] = "ㅅ";
+            return array;
+        }else if(s.equals("ㄾ")){
+            String[] array = new String[2];
+            array[0] = "ㄹ";
+            array[1] = "ㅌ";
+            return array;
+        }else if(s.equals("ㅀ")){
+            String[] array = new String[2];
+            array[0] = "ㄹ";
+            array[1] = "ㅎ";
+            return array;
+        }
+        String[] array = new String[1];
+        array[0] = s;
+        return array;
     }
 }
