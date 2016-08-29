@@ -23,7 +23,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/xml_lines"
-            android:layout_margin="10dp"></Button>
+            android:layout_margin="5dp"></Button>
         <Button
             android:text="ㄴ"
             android:textSize="60dp"
@@ -32,7 +32,7 @@
             android:textColor="#000"
             android:layout_weight="1"
             android:background="@drawable/xml_lines"
-            android:layout_margin="10dp"></Button>
+            android:layout_margin="5dp"></Button>
         <Button
             android:text="ㅇ"
             android:textSize="60dp"
@@ -41,7 +41,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/xml_lines"
-            android:layout_margin="10dp"></Button>
+            android:layout_margin="5dp"></Button>
     </LinearLayout>
 
     <LinearLayout
@@ -58,7 +58,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/xml_lines"
-            android:layout_margin="10dp"></Button>
+            android:layout_margin="5dp"></Button>
         <Button
             android:text="ㅎ"
             android:textSize="60dp"
@@ -67,7 +67,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/xml_lines"
-            android:layout_margin="10dp"></Button>
+            android:layout_margin="5dp"></Button>
         <Button
             android:text="ㅎ"
             android:textSize="60dp"
@@ -76,7 +76,7 @@
             android:textColor="#000"
             android:layout_weight="1"
             android:background="@drawable/xml_lines"
-            android:layout_margin="10dp"></Button>
+            android:layout_margin="5dp"></Button>
     </LinearLayout>
 
 </LinearLayout>

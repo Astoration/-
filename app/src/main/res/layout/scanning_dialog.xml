@@ -10,10 +10,6 @@
         android:layout_height="200dip"
         android:background="@android:color/darker_gray"
         android:orientation="vertical" >
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
-
         <TextView
             android:id="@+id/txt_content"
             android:layout_width="fill_parent"
@@ -21,7 +17,8 @@
             android:gravity="center"
             android:text="스캐닝 간격 조절(단위: 초)"
             android:textColor="@android:color/black"
-            android:textSize="25sp" />
+            android:textSize="25dp"
+            android:layout_marginTop="20dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,18 +28,26 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:textSize="30dp"
+                android:id="@+id/minus_button"
                 android:layout_height="match_parent"
-                android:text="+"/>
+                android:text="-"/>
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="1초"
+                android:textSize="30dp"
+                android:id="@+id/scanning_time"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:textAlignment="center"/>
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:id="@+id/plus_button"
                 android:layout_height="match_parent"
+                android:textSize="30dp"
                 android:text="+"/>
         </LinearLayout>
         <LinearLayout
@@ -53,13 +58,13 @@
             android:orientation="horizontal" >
 
             <Button
-                android:id="@+id/btn_left"
+                android:id="@+id/btn_accept"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="확인" />
 
             <Button
-                android:id="@+id/btn_right"
+                android:id="@+id/btn_cancel"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="취소" />
