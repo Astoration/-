@@ -204,7 +204,11 @@ public class MainActivity extends Activity implements View.OnTouchListener {
                                 speakCount = 0;
                                 backCount = 0;
                             } else if (backCount == id) {
-                                inputText.setText("");
+                                String baseText = (String) inputText.getText();
+                                if(0<baseText.length()){
+                                    baseText = baseText.substring(0,baseText.length()-1);
+                                }
+                                inputText.setText(baseText);
                                 elementList.clear();
                                 preTextCount = 0;
                                 speakCount = 0;
