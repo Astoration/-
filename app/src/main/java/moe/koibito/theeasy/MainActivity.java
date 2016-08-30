@@ -1025,6 +1025,18 @@ public class MainActivity extends Activity implements View.OnTouchListener {
     public void OnDialogResult(boolean _isScanning, int _scanningTime) {
         this.isScanning = _isScanning;
         this.scanningTime = _scanningTime;
+
+        if(!isScanning){
+            for(Button b : buttons)
+                ((GradientDrawable) ((LayerDrawable) b.getBackground()).getDrawable(1)).setStroke(8, 0x00ff0000);
+
+            for(LinearLayout p : pannels)
+                ((GradientDrawable) ((LayerDrawable) p.getBackground()).getDrawable(1)).setStroke(8, 0x00ff0000);
+
+            ((GradientDrawable) ((LayerDrawable) typeSpeak.getBackground()).getDrawable(1)).setStroke(5, 0x00ff0000);
+
+            ((GradientDrawable) ((LayerDrawable) typeBack.getBackground()).getDrawable(1)).setStroke(5, 0x00ff0000);
+        }
     }
 
     @Override
