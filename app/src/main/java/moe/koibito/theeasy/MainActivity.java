@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Space;
 import android.widget.TextView;
@@ -55,65 +56,77 @@ public class MainActivity extends Activity implements View.OnTouchListener {
     private int[] ColorList = {0xefff5350, 0xffff9700, 0xfffedc3b, 0xff66bb6a, 0xff42a5f5, 0xffab47bc};
     private String[] textList = {"ㅁ", "ㄴ", "ㄹ", "ㅇ", "ㅎ", "ㅂ", "ㅈ", "ㄷ", "ㄱ", "ㅅ", "ㅋ", "ㅌ", "ㅊ", "ㅍ", "?", "―", "ㅏ", "ㅣ", "ㅡ", "ㅗ", "ㅜ", "ㅓ", "ㅑ", "ㅐ", "ㅔ", "ㅛ", "ㅠ", "ㅕ", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
     private TimerTask mTask;
-    private int preCurrentScanIndex=-3;
+    private int preCurrentScanIndex = -3;
     private int currentScanIndex = -2;
     private int timeCounter = 0;
-    private final Handler UIHandler = new Handler(){
+    private TimerTask focusTask;
+    private Timer focustTimer;
+
+    private final Handler UIHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            if(!msg.getData().getString("message").equals("scan")) return;
-            if (isScanning) {
-                timeCounter += 1;
-                isAction=false;
-                if (scanningTime <= timeCounter) {
-                    timeCounter = 0;
-                    if (isTyping) {
-                        if(preCurrentScanIndex!=-3){
-                            if(preCurrentScanIndex==-2)
-                                ((GradientDrawable)((LayerDrawable)typeSpeak.getBackground()).getDrawable(1)).setStroke(5,0x00ff0000);
-                            if(currentScanIndex==-2)
-                                ((GradientDrawable)((LayerDrawable)typeSpeak.getBackground()).getDrawable(1)).setStroke(5,0xffff0000);
-                            if(preCurrentScanIndex==-1)
-                                ((GradientDrawable)((LayerDrawable)typeBack.getBackground()).getDrawable(1)).setStroke(5,0x00ff0000);
-                            if(currentScanIndex==-1)
-                                ((GradientDrawable)((LayerDrawable)typeBack.getBackground()).getDrawable(1)).setStroke(5,0xffff0000);
+            if (msg.getData().getString("message").equals("scan")) {
+                if (isScanning) {
+                    timeCounter += 1;
+                    isAction = false;
+                    if (scanningTime <= timeCounter) {
+                        timeCounter = 0;
+                        if (isTyping) {
+                            if (preCurrentScanIndex != -3) {
+                                if (preCurrentScanIndex == -2)
+                                    ((GradientDrawable) ((LayerDrawable) typeSpeak.getBackground()).getDrawable(1)).setStroke(5, 0x00ff0000);
+                                if (currentScanIndex == -2)
+                                    ((GradientDrawable) ((LayerDrawable) typeSpeak.getBackground()).getDrawable(1)).setStroke(5, 0xffff0000);
+                                if (preCurrentScanIndex == -1)
+                                    ((GradientDrawable) ((LayerDrawable) typeBack.getBackground()).getDrawable(1)).setStroke(5, 0x00ff0000);
+                                if (currentScanIndex == -1)
+                                    ((GradientDrawable) ((LayerDrawable) typeBack.getBackground()).getDrawable(1)).setStroke(5, 0xffff0000);
+                            }
+                            if (-1 <= preCurrentScanIndex) {
+                                if (preCurrentScanIndex != -1)
+                                    ((GradientDrawable) ((LayerDrawable) buttons.get(preCurrentScanIndex).getBackground()).getDrawable(1)).setStroke(8, 0x00ff0000);
+                                ((GradientDrawable) ((LayerDrawable) buttons.get(currentScanIndex).getBackground()).getDrawable(1)).setStroke(8, 0xffff0000);
+                            }
+                            preCurrentScanIndex = currentScanIndex;
+                            currentScanIndex += 1;
+                            if (buttons.size() <= preCurrentScanIndex)
+                                preCurrentScanIndex = -2;
+                            if (buttons.size() <= currentScanIndex)
+                                currentScanIndex = -2;
+                        } else {
+                            if (preCurrentScanIndex == -2)
+                                ((GradientDrawable) ((LayerDrawable) typeSpeak.getBackground()).getDrawable(1)).setStroke(5, 0x00ff0000);
+                            if (currentScanIndex == -2)
+                                ((GradientDrawable) ((LayerDrawable) typeSpeak.getBackground()).getDrawable(1)).setStroke(5, 0xffff0000);
+                            if (preCurrentScanIndex == -1)
+                                ((GradientDrawable) ((LayerDrawable) typeBack.getBackground()).getDrawable(1)).setStroke(5, 0x00ff0000);
+                            if (currentScanIndex == -1)
+                                ((GradientDrawable) ((LayerDrawable) typeBack.getBackground()).getDrawable(1)).setStroke(5, 0xffff0000);
+                            if (-1 <= preCurrentScanIndex || 0 <= currentScanIndex) {
+                                if (preCurrentScanIndex != -1)
+                                    ((GradientDrawable) ((LayerDrawable) pannels.get(preCurrentScanIndex).getBackground()).getDrawable(1)).setStroke(8, 0x00ff0000);
+                                if (-1 < currentScanIndex)
+                                    ((GradientDrawable) ((LayerDrawable) pannels.get(currentScanIndex).getBackground()).getDrawable(1)).setStroke(8, 0xffff0000);
+                            }
+                            preCurrentScanIndex = currentScanIndex;
+                            currentScanIndex += 1;
+                            if (pannels.size() <= preCurrentScanIndex)
+                                preCurrentScanIndex = -2;
+                            if (pannels.size() <= currentScanIndex)
+                                currentScanIndex = -2;
+                            ((GradientDrawable) ((LayerDrawable) getDrawable(R.drawable.xml_lines)).getDrawable(1)).setStroke(8, 0x00ff0000);
+                            Log.d("index", preCurrentScanIndex + "/" + currentScanIndex);
                         }
-                        if(-1<=preCurrentScanIndex) {
-                            if (preCurrentScanIndex != -1)
-                                ((GradientDrawable)((LayerDrawable)buttons.get(preCurrentScanIndex).getBackground()).getDrawable(1)).setStroke(8,0x00ff0000);
-                            ((GradientDrawable)((LayerDrawable)buttons.get(currentScanIndex).getBackground()).getDrawable(1)).setStroke(8,0xffff0000);
-                        }
-                        preCurrentScanIndex=currentScanIndex;
-                        currentScanIndex+=1;
-                        if(buttons.size()<=preCurrentScanIndex)
-                            preCurrentScanIndex=-2;
-                        if(buttons.size()<=currentScanIndex)
-                            currentScanIndex=-2;
-                    } else {
-                        if(preCurrentScanIndex==-2)
-                            ((GradientDrawable)((LayerDrawable)typeSpeak.getBackground()).getDrawable(1)).setStroke(5,0x00ff0000);
-                        if(currentScanIndex==-2)
-                            ((GradientDrawable)((LayerDrawable)typeSpeak.getBackground()).getDrawable(1)).setStroke(5,0xffff0000);
-                        if(preCurrentScanIndex==-1)
-                            ((GradientDrawable)((LayerDrawable)typeBack.getBackground()).getDrawable(1)).setStroke(5,0x00ff0000);
-                        if(currentScanIndex==-1)
-                            ((GradientDrawable)((LayerDrawable)typeBack.getBackground()).getDrawable(1)).setStroke(5,0xffff0000);
-                        if(-1<=preCurrentScanIndex||0<=currentScanIndex) {
-                            if (preCurrentScanIndex != -1)
-                                ((GradientDrawable)((LayerDrawable)pannels.get(preCurrentScanIndex).getBackground()).getDrawable(1)).setStroke(8,0x00ff0000);
-                            if(-1<currentScanIndex)
-                                ((GradientDrawable)((LayerDrawable)pannels.get(currentScanIndex).getBackground()).getDrawable(1)).setStroke(8,0xffff0000);
-                        }
-                        preCurrentScanIndex=currentScanIndex;
-                        currentScanIndex+=1;
-                        if(pannels.size()<=preCurrentScanIndex)
-                            preCurrentScanIndex=-2;
-                        if(pannels.size()<=currentScanIndex)
-                            currentScanIndex=-2;
-                        ((GradientDrawable)((LayerDrawable)getDrawable(R.drawable.xml_lines)).getDrawable(1)).setStroke(8,0x00ff0000);
-                        Log.d("index",preCurrentScanIndex+"/"+currentScanIndex);
                     }
                 }
+            } else if (msg.getData().getString("message").equals("focus")) {
+                String baseText = (String) inputText.getText();
+                if (0<baseText.length()&&String.valueOf(baseText.charAt(baseText.length()-1)).equals("|")) {
+                    baseText = baseText.substring(0, baseText.length() - 1);
+                } else {
+                    baseText = baseText + "|";
+                }
+                inputText.setText(baseText);
             }
             super.handleMessage(msg);
         }
@@ -132,19 +145,32 @@ public class MainActivity extends Activity implements View.OnTouchListener {
         inputText.setOnTouchListener(this);
         typeBack.setOnTouchListener(this);
         typeSpeak.setOnTouchListener(this);
+        final ImageView icLock = (ImageView) findViewById(R.id.ic_lock);
         final MainActivity activity = this;
         mTask = new TimerTask() {
             @Override
             public void run() {
                 Message msg = new Message();
                 Bundle bundle = new Bundle();
-                bundle.putString("message","scan");
+                bundle.putString("message", "scan");
                 msg.setData(bundle);
                 UIHandler.sendMessage(msg);
             }
         };
-        mTimer= new Timer();
+        mTimer = new Timer();
         mTimer.schedule(mTask, 1000, 1000);
+        focusTask = new TimerTask() {
+            @Override
+            public void run() {
+                Message msg = new Message();
+                Bundle bundle = new Bundle();
+                bundle.putString("message", "focus");
+                msg.setData(bundle);
+                UIHandler.sendMessage(msg);
+            }
+        };
+        focustTimer = new Timer();
+        focustTimer.schedule(focusTask, 500, 500);
         ttsManager = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
@@ -164,11 +190,15 @@ public class MainActivity extends Activity implements View.OnTouchListener {
                             return;
                         if (id == speakCount) {
                             if (speakCount == 2 && backCount == 2) {
-                                new ScanningDialog(activity,activity).show();
+                                new ScanningDialog(activity, activity).show();
                                 speakCount = 0;
                                 backCount = 0;
                             } else if (speakCount == 1 && backCount == 1) {
                                 isLock = !isLock;
+                                if(isLock)
+                                    icLock.setVisibility(View.VISIBLE);
+                                else
+                                    icLock.setVisibility(View.INVISIBLE);
                                 speakCount = 0;
                                 backCount = 0;
                             } else if (speakCount == id) {
@@ -196,17 +226,21 @@ public class MainActivity extends Activity implements View.OnTouchListener {
                             return;
                         if (id == backCount) {
                             if (speakCount == 2 && backCount == 2) {
-                                new ScanningDialog(activity,activity).show();
+                                new ScanningDialog(activity, activity).show();
                                 speakCount = 0;
                                 backCount = 0;
                             } else if (speakCount == 1 && backCount == 1) {
                                 isLock = !isLock;
+                                if(isLock)
+                                    icLock.setVisibility(View.VISIBLE);
+                                else
+                                    icLock.setVisibility(View.INVISIBLE);
                                 speakCount = 0;
                                 backCount = 0;
                             } else if (backCount == id) {
                                 String baseText = (String) inputText.getText();
-                                if(0<baseText.length()){
-                                    baseText = baseText.substring(0,baseText.length()-1);
+                                if (0 < baseText.length()) {
+                                    baseText = baseText.substring(0, baseText.length() - 1);
                                 }
                                 inputText.setText(baseText);
                                 elementList.clear();
@@ -470,6 +504,7 @@ public class MainActivity extends Activity implements View.OnTouchListener {
     @Override
     protected void onDestroy() {
         mTimer.cancel();
+        focustTimer.cancel();
         super.onDestroy();
     }
 
@@ -850,6 +885,9 @@ public class MainActivity extends Activity implements View.OnTouchListener {
 
     void typeString(String text, int code) {
         String baseString = inputText.getText().toString();
+        if (0<baseString.length()&&String.valueOf(baseString.charAt(baseString.length()-1)).equals("|")) {
+            baseString = baseString.substring(0, baseString.length() - 1);
+        }
         String elementString = text;
         Log.d("asdf", elementList.size() + "");
         if (elementList.size() > 0) {
@@ -860,7 +898,7 @@ public class MainActivity extends Activity implements View.OnTouchListener {
                 elementList.remove(elementList.size() - 1);
             }
         }
-        if (elementString.matches(".*[ㅏ-ㅣ]+.*")&&elementList.size()!=0) {
+        if (elementString.matches(".*[ㅏ-ㅣ]+.*") && elementList.size() != 0) {
             String[] devideText = devideVowels(elementList.get(elementList.size() - 1));
             elementList.remove(elementList.size() - 1);
             for (String t : devideText) {
@@ -991,51 +1029,51 @@ public class MainActivity extends Activity implements View.OnTouchListener {
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
-        if(!(motionEvent.getAction()==MotionEvent.ACTION_DOWN)) return false;
-        if(!isScanning) return false;
-        if(isAction) return false;
-        if(isTyping){
-            for(Button button : buttons){
-                ((GradientDrawable)((LayerDrawable)button.getBackground()).getDrawable(1)).setStroke(8,0x00ff0000);
+        if (!(motionEvent.getAction() == MotionEvent.ACTION_DOWN)) return false;
+        if (!isScanning) return false;
+        if (isAction) return false;
+        if (isTyping) {
+            for (Button button : buttons) {
+                ((GradientDrawable) ((LayerDrawable) button.getBackground()).getDrawable(1)).setStroke(8, 0x00ff0000);
             }
-            if(currentScanIndex<1){
-                if(currentScanIndex==-0){
+            if (currentScanIndex < 1) {
+                if (currentScanIndex == -0) {
                     inputText.setText("");
-                    isTyping=false;
-                }else if(currentScanIndex==-1){
+                    isTyping = false;
+                } else if (currentScanIndex == -1) {
                     String utteranceId = this.hashCode() + "";
                     ttsManager.speak(inputText.getText(), TextToSpeech.QUEUE_FLUSH, null, utteranceId);
                     inputText.setText("");
-                    isTyping=false;
+                    isTyping = false;
                 }
                 return false;
             }
-            final Button button = buttons.get(currentScanIndex-1);
+            final Button button = buttons.get(currentScanIndex - 1);
             final String text = (String) button.getText();
             int code = 0;
-            for(String s : textList){
-                if(s.equals(text))
+            for (String s : textList) {
+                if (s.equals(text))
                     break;
-                code+=1;
+                code += 1;
             }
-            typeString(text,code);
-            isAction=true;
-            isTyping=false;
-        }else{
+            typeString(text, code);
+            isAction = true;
+            isTyping = false;
+        } else {
             buttons.clear();
-            if(currentScanIndex<1){
-                if(currentScanIndex==-0){
+            if (currentScanIndex < 1) {
+                if (currentScanIndex == -0) {
                     inputText.setText("");
-                    isTyping=false;
-                }else if(currentScanIndex==-1){
+                    isTyping = false;
+                } else if (currentScanIndex == -1) {
                     String utteranceId = this.hashCode() + "";
                     ttsManager.speak(inputText.getText(), TextToSpeech.QUEUE_FLUSH, null, utteranceId);
                     inputText.setText("");
-                    isTyping=false;
+                    isTyping = false;
                 }
                 return false;
             }
-            LinearLayout keypad = pannels.get(currentScanIndex-1);
+            LinearLayout keypad = pannels.get(currentScanIndex - 1);
             LinearLayout childTop = (LinearLayout) keypad.getChildAt(0);
             LinearLayout childBottom = (LinearLayout) keypad.getChildAt(1);
             switch (childTop.getChildCount()) {
@@ -1067,13 +1105,13 @@ public class MainActivity extends Activity implements View.OnTouchListener {
                     break;
 
             }
-            for(LinearLayout pannel : pannels){
-                ((GradientDrawable)((LayerDrawable)pannel.getBackground()).getDrawable(1)).setStroke(8,0x00ff0000);
+            for (LinearLayout pannel : pannels) {
+                ((GradientDrawable) ((LayerDrawable) pannel.getBackground()).getDrawable(1)).setStroke(8, 0x00ff0000);
             }
-            preCurrentScanIndex=-3;
-            currentScanIndex=-2;
-            isAction=true;
-            isTyping=true;
+            preCurrentScanIndex = -3;
+            currentScanIndex = -2;
+            isAction = true;
+            isTyping = true;
         }
         return false;
     }
