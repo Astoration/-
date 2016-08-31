@@ -1029,7 +1029,10 @@ public class MainActivity extends Activity implements View.OnTouchListener {
     public void OnDialogResult(boolean _isScanning, int _scanningTime) {
         this.isScanning = _isScanning;
         this.scanningTime = _scanningTime;
-
+        if(isTyping){
+            this.isScanning=false;
+            Toast.makeText(getApplicationContext(),"Lock 상태에서만 스캐닝을 사용할 수 있습니다",Toast.LENGTH_LONG).show();
+        }
         if(!isScanning){
             for(Button b : buttons)
                 ((GradientDrawable) ((LayerDrawable) b.getBackground()).getDrawable(1)).setStroke(8, 0x00ff0000);
