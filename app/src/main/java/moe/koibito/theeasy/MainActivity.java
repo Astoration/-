@@ -56,8 +56,8 @@ public class MainActivity extends Activity implements View.OnTouchListener {
     private int[] ColorList = {0xefff5350, 0xffff9700, 0xfffedc3b, 0xff66bb6a, 0xff42a5f5, 0xffab47bc};
     private String[] textList = {"ㅁ", "ㄴ", "ㄹ", "ㅇ", "ㅎ", "ㅂ", "ㅈ", "ㄷ", "ㄱ", "ㅅ", "ㅋ", "ㅌ", "ㅊ", "ㅍ", "?", "―", "ㅏ", "ㅣ", "ㅡ", "ㅗ", "ㅜ", "ㅓ", "ㅑ", "ㅐ", "ㅔ", "ㅛ", "ㅠ", "ㅕ", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
     private TimerTask mTask;
-    private int preCurrentScanIndex = -3;
-    private int currentScanIndex = -2;
+    private int _preCurrentScanIndex = -3;
+    private int _currentScanIndex = -2;
     private int timeCounter = 0;
     private TimerTask focusTask;
     private Timer focustTimer;
@@ -71,6 +71,8 @@ public class MainActivity extends Activity implements View.OnTouchListener {
                     isAction = false;
                     if (scanningTime <= timeCounter) {
                         timeCounter = 0;
+                        final int preCurrentScanIndex = _preCurrentScanIndex;
+                        final int currentScanIndex = _currentScanIndex;
                         if (isTyping) {
                             if (preCurrentScanIndex != -3) {
                                 if (preCurrentScanIndex == -2)
@@ -83,16 +85,18 @@ public class MainActivity extends Activity implements View.OnTouchListener {
                                     ((GradientDrawable) ((LayerDrawable) typeBack.getBackground()).getDrawable(1)).setStroke(5, 0xffff0000);
                             }
                             if (-1 <= preCurrentScanIndex) {
-                                if (preCurrentScanIndex != -1)
+                                if (preCurrentScanIndex != -1&&preCurrentScanIndex<buttons.size())
                                     ((GradientDrawable) ((LayerDrawable) buttons.get(preCurrentScanIndex).getBackground()).getDrawable(1)).setStroke(8, 0x00ff0000);
-                                ((GradientDrawable) ((LayerDrawable) buttons.get(currentScanIndex).getBackground()).getDrawable(1)).setStroke(8, 0xffff0000);
+                                if(-1<currentScanIndex&&currentScanIndex<buttons.size())
+                                    ((GradientDrawable) ((LayerDrawable) buttons.get(currentScanIndex).getBackground()).getDrawable(1)).setStroke(8, 0xffff0000);
                             }
-                            preCurrentScanIndex = currentScanIndex;
-                            currentScanIndex += 1;
-                            if (buttons.size() <= preCurrentScanIndex)
-                                preCurrentScanIndex = -2;
-                            if (buttons.size() <= currentScanIndex)
-                                currentScanIndex = -2;
+                            _preCurrentScanIndex = currentScanIndex;
+                            _currentScanIndex += 1;
+                            if (buttons.size()-1 <= preCurrentScanIndex)
+                                _preCurrentScanIndex = -2;
+                            if (buttons.size()-1 <= currentScanIndex)
+                                _currentScanIndex = -2;
+                            Log.d("index", preCurrentScanIndex + "/" + currentScanIndex);
                         } else {
                             if (preCurrentScanIndex == -2)
                                 ((GradientDrawable) ((LayerDrawable) typeSpeak.getBackground()).getDrawable(1)).setStroke(5, 0x00ff0000);
@@ -103,17 +107,17 @@ public class MainActivity extends Activity implements View.OnTouchListener {
                             if (currentScanIndex == -1)
                                 ((GradientDrawable) ((LayerDrawable) typeBack.getBackground()).getDrawable(1)).setStroke(5, 0xffff0000);
                             if (-1 <= preCurrentScanIndex || 0 <= currentScanIndex) {
-                                if (preCurrentScanIndex != -1)
+                                if (preCurrentScanIndex != -1&&preCurrentScanIndex<pannels.size())
                                     ((GradientDrawable) ((LayerDrawable) pannels.get(preCurrentScanIndex).getBackground()).getDrawable(1)).setStroke(8, 0x00ff0000);
-                                if (-1 < currentScanIndex)
+                                if (-1 < currentScanIndex&&currentScanIndex<pannels.size())
                                     ((GradientDrawable) ((LayerDrawable) pannels.get(currentScanIndex).getBackground()).getDrawable(1)).setStroke(8, 0xffff0000);
                             }
-                            preCurrentScanIndex = currentScanIndex;
-                            currentScanIndex += 1;
-                            if (pannels.size() <= preCurrentScanIndex)
-                                preCurrentScanIndex = -2;
-                            if (pannels.size() <= currentScanIndex)
-                                currentScanIndex = -2;
+                            _preCurrentScanIndex = currentScanIndex;
+                            _currentScanIndex += 1;
+                            if (pannels.size()-1 <= preCurrentScanIndex)
+                                _preCurrentScanIndex = -2;
+                            if (pannels.size()-1 <= currentScanIndex)
+                                _currentScanIndex = -2;
                             ((GradientDrawable) ((LayerDrawable) getDrawable(R.drawable.xml_lines)).getDrawable(1)).setStroke(8, 0x00ff0000);
                             Log.d("index", preCurrentScanIndex + "/" + currentScanIndex);
                         }
@@ -1044,6 +1048,7 @@ public class MainActivity extends Activity implements View.OnTouchListener {
         if (!(motionEvent.getAction() == MotionEvent.ACTION_DOWN)) return false;
         if (!isScanning) return false;
         if (isAction) return false;
+        final int currentScanIndex = _currentScanIndex;
         if (isTyping) {
             for (Button button : buttons) {
                 ((GradientDrawable) ((LayerDrawable) button.getBackground()).getDrawable(1)).setStroke(8, 0x00ff0000);
@@ -1120,8 +1125,8 @@ public class MainActivity extends Activity implements View.OnTouchListener {
             for (LinearLayout pannel : pannels) {
                 ((GradientDrawable) ((LayerDrawable) pannel.getBackground()).getDrawable(1)).setStroke(8, 0x00ff0000);
             }
-            preCurrentScanIndex = -3;
-            currentScanIndex = -2;
+            _preCurrentScanIndex = -3;
+            _currentScanIndex = -2;
             isAction = true;
             isTyping = true;
         }
