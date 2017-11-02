@@ -194,7 +194,11 @@ public class MainActivity extends Activity implements View.OnTouchListener {
                             return;
                         if (id == speakCount) {
                             if (speakCount == 2 && backCount == 2) {
-                                new ScanningDialog(activity, activity).show();
+                                if(isLock) {
+                                    new ScanningDialog(activity, activity).show();
+                                }else{
+                                    Toast.makeText(getApplication(),"Lock상태에서만 스캐닝을 할 수 있습니다",Toast.LENGTH_LONG).show();
+                                }
                                 speakCount = 0;
                                 backCount = 0;
                             } else if (speakCount == 1 && backCount == 1) {
