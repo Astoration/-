@@ -897,7 +897,6 @@ public class MainActivity extends Activity implements View.OnTouchListener {
             baseString = baseString.substring(0, baseString.length() - 1);
         }
         String elementString = text;
-        Log.d("asdf", elementList.size() + "");
         if (elementList.size() > 0) {
             if (!combineVowels(elementList.get(elementList.size() - 1), elementString).equals(elementString)) {
                 elementString = combineVowels(elementList.get(elementList.size() - 1), elementString);
