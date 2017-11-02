@@ -5,61 +5,63 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#fff"
+        android:background="@drawable/background_white"
         android:weightSum="1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
         <LinearLayout
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.2"
-            android:orientation="horizontal"
-            android:background="#616d78">
+            android:orientation="horizontal">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="15dp"
                 android:weightSum="1"
-                android:orientation="horizontal"
-                android:background="@drawable/xml_lines">
-                <ImageButton
+                android:orientation="horizontal">
+                <Button
                     android:id="@+id/type_speakbutton"
                     android:layout_width="0dp"
-                    android:src="@drawable/ic_speak"
+                    android:background="@drawable/search_read"
                     android:scaleType="fitCenter"
                     android:layout_height="match_parent"
-                    android:background="@drawable/xml_lines"
-                    android:layout_weight="0.15"
-                    android:layout_margin="15dp">
-                </ImageButton>
+                    android:layout_weight="0.15">
+                </Button>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="0.7"
+                    android:background="@drawable/search_bar"
+                    android:layout_height="match_parent">
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.65"
+                    android:layout_weight="0.9"
                     android:text="Lolem Ipsum"
                     android:textSize="60dp"
+                    android:paddingLeft="15dp"
                     android:textColor="#000"
                     android:id="@+id/input_field"
-                    android:background="@drawable/under_lines"
                     android:layout_margin="15dp"/>
                 <ImageView
                     android:layout_width="0dp"
                     android:id="@+id/ic_lock"
                     android:visibility="invisible"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.05"
+                    android:layout_weight="0.1"
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/ic_lock"/>
-                <ImageButton
+                </LinearLayout>
+                <Button
                     android:id="@+id/type_backbutton"
                     android:layout_width="0dp"
-                    android:src="@drawable/ic_back"
+                    android:background="@drawable/search_backspace"
                     android:scaleType="fitCenter"
                     android:layout_height="match_parent"
-                    android:background="@drawable/xml_lines"
-                    android:layout_weight="0.15"
-                    android:layout_margin="15dp">
-                </ImageButton>
+                    android:layout_weight="0.15">
+                </Button>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout

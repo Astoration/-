@@ -40,8 +40,8 @@ public class MainActivity extends Activity implements View.OnTouchListener {
     private LinearLayout basePanel;
     private boolean isTyping = false;
     private TextView inputText;
-    private ImageButton typeSpeak;
-    private ImageButton typeBack;
+    private Button typeSpeak;
+    private Button typeBack;
     private TextToSpeech ttsManager;
     private int speakCount = 0;
     private int preTextCount = 0;
@@ -53,7 +53,7 @@ public class MainActivity extends Activity implements View.OnTouchListener {
     private boolean isScanning = false;
     private int scanningTime = 0;
     private Timer mTimer;
-    private int[] ColorList = {0xefff5350, 0xffff9700, 0xfffedc3b, 0xff66bb6a, 0xff42a5f5, 0xffab47bc};
+    private int[] DrawableList = {R.drawable.keyboard_red,R.drawable.keyboard_green,R.drawable.keyboard_blue,R.drawable.keyboard_lightblue,R.drawable.keyboard_orange,R.drawable.keyboard_purple};
     private String[] textList = {"ㅁ", "ㄴ", "ㄹ", "ㅇ", "ㅎ", "ㅂ", "ㅈ", "ㄷ", "ㄱ", "ㅅ", "ㅋ", "ㅌ", "ㅊ", "ㅍ", "?", "―", "ㅏ", "ㅣ", "ㅡ", "ㅗ", "ㅜ", "ㅓ", "ㅑ", "ㅐ", "ㅔ", "ㅛ", "ㅠ", "ㅕ", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
     private TimerTask mTask;
     private int _preCurrentScanIndex = -3;
@@ -143,8 +143,8 @@ public class MainActivity extends Activity implements View.OnTouchListener {
         setContentView(R.layout.activity_main);
         basePanel = (LinearLayout) findViewById(R.id.base_panel);
         inputText = (TextView) findViewById(R.id.input_field);
-        typeSpeak = (ImageButton) findViewById(R.id.type_speakbutton);
-        typeBack = (ImageButton) findViewById(R.id.type_backbutton);
+        typeSpeak = (Button) findViewById(R.id.type_speakbutton);
+        typeBack = (Button) findViewById(R.id.type_backbutton);
         basePanel.setOnTouchListener(this);
         inputText.setOnTouchListener(this);
         typeBack.setOnTouchListener(this);
@@ -282,9 +282,8 @@ public class MainActivity extends Activity implements View.OnTouchListener {
                     OnKeyboardSet(finalI1 + 1);
                 }
             });
-            LayerDrawable drawable = (LayerDrawable) child.getBackground();
-            GradientDrawable grDrawable = (GradientDrawable) drawable.getDrawable(0);
-            grDrawable.setColor(ColorList[0 + i]);
+            child.setBackground(getDrawable(DrawableList[0+i]));
+
             pannels.add(child);
             LinearLayout childTop = (LinearLayout) child.getChildAt(0);
             LinearLayout childBottom = (LinearLayout) child.getChildAt(1);
@@ -399,9 +398,7 @@ public class MainActivity extends Activity implements View.OnTouchListener {
                     OnKeyboardSet(finalI1 + 4);
                 }
             });
-            LayerDrawable drawable = (LayerDrawable) child.getBackground();
-            GradientDrawable grDrawable = (GradientDrawable) drawable.getDrawable(0);
-            grDrawable.setColor(ColorList[3 + i]);
+            child.setBackground(getDrawable(DrawableList[3+i]));
             pannels.add(child);
             LinearLayout childTop = (LinearLayout) child.getChildAt(0);
             LinearLayout childBottom = (LinearLayout) child.getChildAt(1);
@@ -554,7 +551,7 @@ public class MainActivity extends Activity implements View.OnTouchListener {
 
         keypad.setLayoutParams(keypadParams);
 
-        ((GradientDrawable) ((LayerDrawable) keypad.getBackground()).getDrawable(0)).setColor(ColorList[keypadnum - 1]);
+        keypad.setBackground(getDrawable(DrawableList[keypadnum-1]));;
         ((GradientDrawable) ((LayerDrawable) getDrawable(R.drawable.xml_lines)).getDrawable(0)).setColor(0xffffffff);
 
         switch (keypadnum) {
@@ -683,9 +680,7 @@ public class MainActivity extends Activity implements View.OnTouchListener {
                             OnKeyboardSet(finalI1 + 1);
                         }
                     });
-                    LayerDrawable drawable = (LayerDrawable) child.getBackground();
-                    GradientDrawable grDrawable = (GradientDrawable) drawable.getDrawable(0);
-                    grDrawable.setColor(ColorList[0 + i]);
+                    child.setBackground(getDrawable(DrawableList[0+i]));
                     pannels.add(child);
                     LinearLayout childTop = (LinearLayout) child.getChildAt(0);
                     LinearLayout childBottom = (LinearLayout) child.getChildAt(1);
@@ -790,9 +785,7 @@ public class MainActivity extends Activity implements View.OnTouchListener {
                             OnKeyboardSet(finalI1 + 4);
                         }
                     });
-                    LayerDrawable drawable = (LayerDrawable) child.getBackground();
-                    GradientDrawable grDrawable = (GradientDrawable) drawable.getDrawable(0);
-                    grDrawable.setColor(ColorList[3 + i]);
+                    child.setBackground(getDrawable(DrawableList[3+i]));
                     pannels.add(child);
                     LinearLayout childTop = (LinearLayout) child.getChildAt(0);
                     LinearLayout childBottom = (LinearLayout) child.getChildAt(1);
