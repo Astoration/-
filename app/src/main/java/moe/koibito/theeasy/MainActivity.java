@@ -533,13 +533,13 @@ public class MainActivity extends Activity implements View.OnTouchListener {
         int startNum = 0;
         int keypadCount = 0;
         if (keypadnum <= 2) {
-            keypad = (LinearLayout) inflater.inflate(R.layout.button_panel, (ViewGroup) findViewById(R.id.button_pannel1));
+            keypad = (LinearLayout) inflater.inflate(R.layout.button_panel_big, (ViewGroup) findViewById(R.id.button_pannel1));
             keypadCount = 5;
         } else if (keypadnum == 6) {
-            keypad = (LinearLayout) inflater.inflate(R.layout.button_panel3, (ViewGroup) findViewById(R.id.button_pannel3));
+            keypad = (LinearLayout) inflater.inflate(R.layout.button_panel3_big, (ViewGroup) findViewById(R.id.button_pannel3));
             keypadCount = 10;
         } else {
-            keypad = (LinearLayout) inflater.inflate(R.layout.button_panel2, (ViewGroup) findViewById(R.id.button_pannel2));
+            keypad = (LinearLayout) inflater.inflate(R.layout.button_panel2_big, (ViewGroup) findViewById(R.id.button_pannel2));
             keypadCount = 6;
         }
         inputSlot.addView(keypad);
