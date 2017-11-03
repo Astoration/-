@@ -3,17 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="1"
-    android:background="@drawable/bg_splash">
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="0.2"/>
+    android:weightSum="1">
     <ImageView
-        android:layout_weight="0.6"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:src="@drawable/app_logo"
-        android:layout_gravity="center_vertical|center_horizontal"/>
-
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/splash_orange"
+        android:scaleType="centerCrop"/>
 </LinearLayout>
