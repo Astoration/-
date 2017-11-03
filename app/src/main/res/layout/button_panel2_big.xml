@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:layout_weight="1"
     android:id="@+id/button_pannel2"
-    android:background="@drawable/xml_lines"
+    android:background="@drawable/keyboard_plain_key"
     android:layout_margin="5dp"
     android:weightSum="1"
     android:orientation="vertical"
@@ -24,7 +24,7 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/xml_lines"
+            android:background="@drawable/keyboard_plain_key"
             android:layout_margin="5dp"></Button>
         <Button
             android:text="ㄴ"
@@ -33,7 +33,7 @@
             android:layout_height="match_parent"
             android:textColor="#000"
             android:layout_weight="1"
-            android:background="@drawable/xml_lines"
+            android:background="@drawable/keyboard_plain_key"
             android:layout_margin="5dp"></Button>
         <Button
             android:text="ㅇ"
@@ -42,7 +42,7 @@
             android:textColor="#000"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/xml_lines"
+            android:background="@drawable/keyboard_plain_key"
             android:layout_margin="5dp"></Button>
     </LinearLayout>
 
@@ -61,7 +61,7 @@
             android:textColor="#000"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/xml_lines"
+            android:background="@drawable/keyboard_plain_key"
             android:layout_margin="5dp"></Button>
         <Button
             android:text="ㅎ"
@@ -70,7 +70,7 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/xml_lines"
+            android:background="@drawable/keyboard_plain_key"
             android:layout_margin="5dp"></Button>
         <Button
             android:text="ㅎ"
@@ -79,7 +79,7 @@
             android:layout_height="match_parent"
             android:textColor="#000"
             android:layout_weight="1"
-            android:background="@drawable/xml_lines"
+            android:background="@drawable/keyboard_plain_key"
             android:layout_margin="5dp"></Button>
     </LinearLayout>
 
